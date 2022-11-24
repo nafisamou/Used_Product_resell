@@ -1,67 +1,41 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import { AuthContext } from "../../contexts/AuthProvider";
 // import useToken from "../../hook/useToken";
 
-const SignUp = () => {
+const Login = () => {
   const {
     register,
-    handleSubmit,
     formState: { errors },
+    handleSubmit,
   } = useForm();
-  const { createUser, updateUserProfile, signInWithGoogle } =
-    useContext(AuthContext);
-  const [signUpError, setSignUPError] = useState("");
-  const [createdUserEmail, setCreatedUser] = useState("");
-  //   const [token] = useToken(createdUserEmail);
-  const navigate = useNavigate();
+  const { signIn, signInWithGoogle } = useContext(AuthContext);
+  const [loginError, setLoginError] = useState("");
   const location = useLocation();
+  const [loginUserEmail, setLoginUserEmail] = useState("");
+  //   const [token] = useToken(loginUserEmail);
+  const navigate = useNavigate();
+
   const from = location.state?.from?.pathname || "/";
   //   if (token) {
-  //     navigate("/");
+  //     navigate(from, { replace: true });
   //   }
-  const handleSignUp = (data) => {
+  const handleLogin = (data) => {
     console.log(data);
-    setSignUPError("");
-    createUser(data.email, data.password)
+    setLoginError("");
+    signIn(data.email, data.password)
       .then((result) => {
         const user = result.user;
         console.log(user);
-        toast.success("User Created Successfully.");
-        navigate("/");
-        const userInfo = {
-          displayName: data.name,
-          photoURL: data.photo,
-        }
-        updateUserProfile(userInfo)
-          .then(() => {
-            // saveUser(data.name, data.email);
-          })
-          .catch((err) => console.log(err));
+        setLoginUserEmail(data.email);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.log(error);
-        setSignUPError(error.message);
+        toast.error(error.message);
+        setLoginError(error.message);
       });
-
-   
-
-    /* const saveUser = (name, email) => {
-      const user = { name, email };
-      fetch("https://doctors-portal-server-ebon.vercel.app/users", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(user),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setCreatedUser(email);
-        });
-    }; */
   };
 
   // Google SignIn
@@ -69,46 +43,33 @@ const SignUp = () => {
     signInWithGoogle()
       .then((result) => {
         console.log(result.user);
+        // setAuthToken(user);
         navigate(from, { replace: true });
       })
-      .catch((error) => toast.error(error.message));
+      .catch((error) => {
+        toast.error(error.message);
+      });
   };
 
   return (
-    <div className="h-[550px] flex justify-center items-center shadow-lg mx-auto w-96">
-      <div className="w-96 px-8 py-2">
-        <h2 className="text-xl text-center">Sign Up</h2>
-        <form onSubmit={handleSubmit(handleSignUp)}>
-          <div className="form-control w-full max-w-xs">
-            <label className="label">
-              {" "}
-              <span className="label-text">Name</span>
-            </label>
-            <input
-              type="text"
-              {...register("name", {
-                required: "Name is Required",
-              })}
-              className="input input-bordered w-full max-w-xs"
-            />
-            {errors.name && (
-              <p className="text-red-500">{errors.name.message}</p>
-            )}
-          </div>
+    <div className="h-[600px] flex justify-center items-center w-96 mx-auto shadow-lg my-10">
+      <div className="w-96 p-7">
+        <h2 className="text-xl text-center">Login</h2>
+        <form onSubmit={handleSubmit(handleLogin)}>
           <div className="form-control w-full max-w-xs">
             <label className="label">
               {" "}
               <span className="label-text">Email</span>
             </label>
             <input
-              type="email"
+              type="text"
               {...register("email", {
-                required: "Email is required",
+                required: "Email Address is required",
               })}
               className="input input-bordered w-full max-w-xs"
             />
             {errors.email && (
-              <p className="text-red-500">{errors.email.message}</p>
+              <p className="text-red-600">{errors.email?.message}</p>
             )}
           </div>
           <div className="form-control w-full max-w-xs">
@@ -122,38 +83,51 @@ const SignUp = () => {
                 required: "Password is required",
                 minLength: {
                   value: 6,
-                  message: "Password must be 6 characters long",
-                },
-                pattern: {
-                  value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/,
-                  message:
-                    "Password must have uppercase, number and special characters",
+                  message: "Password must be 6 characters or longer",
                 },
               })}
               className="input input-bordered w-full max-w-xs"
             />
+            <label className="label">
+              {" "}
+              <span className="label-text">Forget Password?</span>
+            </label>
             {errors.password && (
-              <p className="text-red-500">{errors.password.message}</p>
+              <p className="text-red-600">{errors.password?.message}</p>
             )}
           </div>
+          <div className="form-control w-full max-w-xs">
+            <label className="label">
+              {" "}
+              <span className="label-text  text-xl">Choose your account as  </span>
+            </label>
+            <select
+              {...register("choose")}
+              className="select input-bordered w-full max-w-xs my-2 "
+            >
+              
+              <option>Seller</option>
+              <option>User</option>
+             
+            </select>
+          </div>
           <input
-            className="btn btn-accent w-full my-4"
-            value="Sign Up"
+            className="btn btn-accent w-full my-2"
+            value="Login"
             type="submit"
           />
-          {signUpError && <p className="text-red-600">{signUpError}</p>}
+          <div>
+            {loginError && <p className="text-red-600">{loginError}</p>}
+          </div>
         </form>
-        <p className="text-center">
-          Already have an account{" "}
-          <Link className="text-secondary" to="/login">
-            Please Login
+        <p>
+          New to Doctors Portal{" "}
+          <Link className="text-secondary" to="/signup">
+            Create new Account
           </Link>
         </p>
         <div className="divider">OR</div>
-        {/*   <button onClick={handleGoogleSignIn} className="btn btn-outline w-full">
-          CONTINUE WITH GOOGLE
-        </button> */}
-
+        {/*  <button onClick={handleGoogleSignIn} className="btn btn-outline w-full">CONTINUE WITH GOOGLE</button> */}
         <div className="flex items-center pt-4 space-x-1">
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
           <p className="px-3 text-sm dark:text-gray-400">
@@ -191,4 +165,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Login;
