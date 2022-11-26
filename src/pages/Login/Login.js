@@ -112,7 +112,7 @@ const Login = () => {
             </select>
           </div>
           <input
-            className="btn btn-accent w-full my-2"
+            className="btn btn-primary w-full my-2"
             value="Login"
             type="submit"
           />
@@ -122,7 +122,7 @@ const Login = () => {
         </form>
         <p>
           New to Doctors Portal{" "}
-          <Link className="text-secondary" to="/signup">
+          <Link className="text-primary" to="/signup">
             Create new Account
           </Link>
         </p>

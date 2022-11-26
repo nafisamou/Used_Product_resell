@@ -1,23 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import AuthProvider from './contexts/AuthProvider';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import ThemeContextWrapper from './contexts/ThemeContextWrapper';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import AuthProvider from "./contexts/AuthProvider";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import ThemeContextWrapper from "./contexts/ThemeContextWrapper";
 const queryClient = new QueryClient();
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-     <AuthProvider>
-        {" "}
-        <ThemeContextWrapper>
-        <App />
-      </ThemeContextWrapper>
-      </AuthProvider>
     <QueryClientProvider client={queryClient}>
-     
+      <AuthProvider>
+        <ThemeContextWrapper>
+          <App />
+        </ThemeContextWrapper>
+      </AuthProvider>
     </QueryClientProvider>
   </React.StrictMode>
 );

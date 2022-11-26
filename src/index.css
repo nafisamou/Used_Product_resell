@@ -16,5 +16,25 @@ code {
     monospace;
 }
 .white-content {
-  background: #ada6a6;
+  background: #cec7c7;
+  /* color: white; */
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #b4a1a1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(106, 99, 99); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(182, 171, 171); 
 }

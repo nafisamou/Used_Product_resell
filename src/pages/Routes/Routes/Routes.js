@@ -1,13 +1,20 @@
 
 import { createBrowserRouter } from "react-router-dom";
 import Blog from "../../Blog/Blog";
+import CategoryDetails from "../../Categories/CategoryDetails";
+import AddProduct from "../../Dashboard/AddProduct/AddProduct";
+import AllUser from "../../Dashboard/AllUser/AllUser";
+import ManageProducts from "../../Dashboard/ManageProducts/ManageProducts";
+import MyOrders from "../../Dashboard/MyOrders/MyOrders";
+
 import Home from "../../Home/Home/Home";
+import DashboardLayout from "../../Layout/DashboardLayout";
 import Main from "../../Layout/Main";
 import Login from "../../Login/Login";
-import AddProducts from "../../Seller/AddProducts/AddProducts";
 import Advertisement from "../../Seller/Advertisement/Advertisement";
 import ErrorPage from "../../Shared/ErrorPage/ErrorPage";
 import SignUp from "../../SignUp/SignUp";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -34,14 +41,16 @@ const router = createBrowserRouter([
         path: "/advertisement",
         element: <Advertisement></Advertisement>,
       },
+     
       {
-        path: "/addProducts",
-        element: <AddProducts></AddProducts>,
+        path: "/categories/:id",
+        element: <CategoryDetails></CategoryDetails>,
+        loader:({params})=>fetch(`http://localhost:5000/categories/${params.id}`)
       },
      
     ],
   },
- /*  {
+   {
     path: "/dashboard",
     errorElement: <ErrorPage></ErrorPage>,
     element: (
@@ -52,42 +61,42 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard",
-        element: <MyAppointment></MyAppointment>,
+        element: <MyOrders></MyOrders>,
       },
       {
         path: "/dashboard/allUser",
         element: (
-          <AdminRoute>
-            <AllUsers></AllUsers>
-          </AdminRoute>
+       
+            <AllUser></AllUser>
+        
         ),
       },
       {
-        path: "/dashboard/addDoctor",
+        path: "/dashboard/addProduct",
         element: (
-          <AdminRoute>
-            <AddDoctor></AddDoctor>
-          </AdminRoute>
+            <AddProduct></AddProduct>
+          // <AdminRoute>
+          // </AdminRoute>
         ),
       },
       {
-        path: "/dashboard/manageDoctors",
+        path: "/dashboard/manageProduct",
         element: (
-          <AdminRoute>
-            <ManageDoctors></ManageDoctors>
-          </AdminRoute>
+            <ManageProducts></ManageProducts>
+          // <AdminRoute>
+          // </AdminRoute>
         ),
       },
       {
         path: "/dashboard/payment/:id",
         loader: ({ params }) =>
           fetch(
-            `https://doctors-portal-server-ebon.vercel.app/bookings/${params.id}`
+            `http://localhost:5000/bookings/${params.id}`
           ),
-        element: <Payment></Payment>,
+        // element: <Payment></Payment>,
       },
     ],
-  }, */
+  }, 
 ]);
 
 export default router;

@@ -1,0 +1,82 @@
+.title {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 1000;
+    font-size: 22px;
+    line-height: 24px;
+    width: 91px;
+    height: 24px;
+  }
+  
+  .about-section {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+    text-transform: capitalize;
+  }
+  .about-heading {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 45px;
+    line-height: 54px;
+  }
+  .service-p {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+    /* or 188% */
+  
+    text-align: center;
+    text-transform: capitalize;
+  
+    /* Dark 03 */
+  
+    color: #737373;
+  }
+  
+  .service-h {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 45px;
+    line-height: 54px;
+  
+    /* Dark 01 */
+  
+    color: #151515;
+  }
+  .service-t {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 1000;
+    font-size: 22px;
+    line-height: 24px;
+  
+    /* #FF3811 */
+  
+    color: #ff3811;
+  }
+  .img-h {
+    width: 100%;
+    padding: 0px;
+    height: 268.01px;
+  }
+  
+  .login {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 48px;
+    text-align: center;
+  
+    /* Dark 02 */
+  
+    color: #444444;
+  }
+  

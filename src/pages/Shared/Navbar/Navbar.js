@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { Button, InputGroup } from "reactstrap";
-import React, { useContext, useState } from "react";
-import { FaUser } from "react-icons/fa";
+import React, { useContext } from "react";
+
 
 import { ThemeContext, themes } from "../../../contexts/ThemeContext.js";
 import { AuthContext } from "../../../contexts/AuthProvider";
@@ -40,8 +40,9 @@ const Navbar = () => {
         {user?.uid ? (
           <>
             <Link to="/advertisement"title="Advertisement" className="font-medium text-xl">Advertisement</Link>
-            <Link to="/addProducts" title="Add Products" className="font-medium text-xl">Add Products</Link>
-            <li className="lg:font-medium lg:text-[17px] lg:block hidden mt-3">{user?.displayName}</li>
+            <Link to="/dashboard"title="Dashboard" className="font-medium text-xl">Dashboard</Link>
+            
+            <span className="lg:font-medium lg:text-[17px] lg:block hidden mt-3">{user?.displayName}</span>
             <Link
               title="Logout"
               className="btn btn-link font-medium
@@ -136,12 +137,12 @@ const Navbar = () => {
         <ul>
           {" "}
           <Link to="/" className="btn btn-ghost normal-case text-xl">
-            Resale
+            Reselling Products
           </Link>
         </ul>
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal p-0">{menuItems}</ul>
+      <div className="navbar-center hidden lg:flex ">
+        <ul className="menu menu-horizontal p-0 ">{menuItems}</ul>
       </div>
       <label
         htmlFor="dashboard-drawer"

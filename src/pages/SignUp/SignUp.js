@@ -30,14 +30,16 @@ const SignUp = () => {
         const user = result.user;
         console.log(user);
         toast.success("User Created Successfully.");
-        navigate("/");
+        // navigate("/");
         const userInfo = {
           displayName: data.name,
           photoURL: data.photo,
+
         }
         updateUserProfile(userInfo)
           .then(() => {
-            // saveUser(data.name, data.email);
+            // saveUser(data.name, data.email,data.roll );
+            saveUser(data.name,data.email, data.roll)
           })
           .catch((err) => console.log(err));
       })
@@ -48,9 +50,9 @@ const SignUp = () => {
 
    
 
-    /* const saveUser = (name, email) => {
-      const user = { name, email };
-      fetch("https://doctors-portal-server-ebon.vercel.app/users", {
+      const saveUser = (name, email, roll) => {
+      const user = { name, email,roll };
+      fetch("http://localhost:5000/users", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -59,9 +61,10 @@ const SignUp = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          setCreatedUser(email);
+       console.log('test',data);
+       navigate('/')
         });
-    }; */
+    };  
   };
 
   // Google SignIn
@@ -111,6 +114,14 @@ const SignUp = () => {
               <p className="text-red-500">{errors.email.message}</p>
             )}
           </div>
+
+          <select {...register("roll", {
+                        required: "write a valid email"
+                    })}className="select select-bordered text-gray-900 w-full max-w-xs">
+                    <option  value="buyer" className='text-gray-900'>Buyer</option>
+                    <option value="seller"  className='text-gray-900'>Seller</option>
+                </select>
+
           <div className="form-control w-full max-w-xs">
             <label className="label">
               {" "}
