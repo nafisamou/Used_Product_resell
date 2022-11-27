@@ -22,7 +22,7 @@ const ManageProducts = () => {
     queryFn: async () => {
       try {
         const res = await fetch(
-          "http://localhost:5000/products/",
+          "http://localhost:5000/products",
         //   {
         //     headers: {
         //       authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -84,7 +84,7 @@ const ManageProducts = () => {
             </tr>
           </thead>
           <tbody>
-            {products.map((product, i) => (
+            {products && products?.map((product, i) => (
               <tr key={product._id}>
                 <th>{i + 1}</th>
                 <td>

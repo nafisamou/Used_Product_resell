@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
 
 import { useState } from "react";
@@ -15,11 +16,21 @@ const AddProduct = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-    const[loading, setLoading] = useState(false)
+    // const[loading, setLoading] = useState(false)
   const imageHostKey = process.env.REACT_APP_imgbb_key;
   //   console.log(imageHostKey);
   const navigate = useNavigate();
-
+  const { data: options, isLoading,refetch } = useQuery({
+    queryKey: ["options"],
+    queryFn: async () => {
+      const res = await fetch(
+        "http://localhost:5000/categoriesOptions"
+      );
+      const data = await res.json();
+      return data;
+    },
+  });
+  
   const handleAddProduct = (data) => {
     const img = data.img[0];
     const formData = new FormData();
@@ -36,6 +47,9 @@ const AddProduct = () => {
           const product = {
             brand: data.brand,
             // email: data.email,
+            category_id: data.brand,
+            categoryId: data.category_id,
+            // options: data.options,
             model: data.model,
             description: data.description,
             sellerName: data.sellerName,
@@ -59,17 +73,18 @@ const AddProduct = () => {
             .then((res) => res.json())
             .then((result) => {
               console.log(result);
-              toast.success(`${data.name} is added successfully`);
-              setLoading(true)
+              toast.success(`${data.brand} is added successfully`);
+              // setLoading(true)
               navigate("/dashboard/manageProducts");
+              refetch()
             });
         }
       });
   };
 
-    if(loading){
+     if(isLoading){
   <Loading></Loading>
-  }
+  } 
 
   return (
     <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
@@ -110,6 +125,32 @@ const AddProduct = () => {
           <p className="text-red-500">{errors.model.message}</p>
         )}
       </div>
+      { <div className="form-control w-full max-w-xs my-2">
+      <select {...register("categoryId", {
+                        required:true,
+                    })}className="select select-bordered text-gray-900 w-full max-w-xs mt-6">
+                       <option disabled selected>Select Your Category</option>
+                    <option  value="Category-1" className='text-gray-900'>Category-1</option>
+                    <option value="Category-2"  className='text-gray-900'>Category-2</option>
+                    <option value="Category-3"  className='text-gray-900'>Category-3</option>
+                </select>
+      </div> }
+       <div className="form-control w-full max-w-xs">
+            <label className="label">
+              {" "}
+              <span className="label-text">Category</span>
+            </label>
+            <select
+              {...register("category_id")}
+              className="select input-bordered w-full max-w-xs text-black"
+            >  <option disabled selected>Select Your Category</option>
+              {options && options?.map((option) => (
+                <option key={option._id} value={option.brand}>
+                  {option.brand}
+                </option>
+              ))}
+            </select>
+          </div>
       <div className="form-control w-full max-w-xs">
         <label className="label">
           {" "}

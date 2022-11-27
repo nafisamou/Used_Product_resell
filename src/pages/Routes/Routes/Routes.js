@@ -81,7 +81,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/dashboard/manageProduct",
+        path: "/dashboard/manageProducts",
         element: (
             <ManageProducts></ManageProducts>
           // <AdminRoute>

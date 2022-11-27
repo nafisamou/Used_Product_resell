@@ -9,7 +9,7 @@ import Navbar from "../Shared/Navbar/Navbar";
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
-  // const [isAdmin] = useAdmin(user?.email);
+  const [isAdmin] = useAdmin(user?.email);
   return (
     <div>
       <Navbar></Navbar>
@@ -29,7 +29,7 @@ const DashboardLayout = () => {
               <Link to="/dashboard">My Orders</Link>
             </li>
             
-              {/* {isAdmin && ( */}
+              {/* { isAdmin && (  */}
                 <>
                   <li>
                     <Link to="/dashboard/allUser">All User</Link>
@@ -38,11 +38,11 @@ const DashboardLayout = () => {
                     <Link to="/dashboard/addProduct">Add a Product</Link>
                   </li>
                   <li>
-                    <Link to="/dashboard/manageProduct">Manage Product</Link>
+                    <Link to="/dashboard/manageProducts">Manage Product</Link>
                   </li>
                   
                 </>
-              {/* )} */}
+               {/* )}  */}
             
           </ul>
         </div>
