@@ -3,30 +3,70 @@ import React from "react";
 const Subscribe = () => {
   return (
     <div>
-      <footer className="flex justify-center px-4 text-gray-800 dark:text-white dark:bg-gray-900 my-5">
-        <div className="container py-6">
-          <h1 className="text-lg font-bold text-center lg:text-2xl">
-            Join 31,000+ other and never miss <br /> out on new tips, tutorials,
-            and more.
-          </h1>
-
-          <div className="flex justify-center mt-6">
-            <div className=" border rounded-md focus-within:ring dark:bg-gray-900 dark:border-gray-700 focus-within:border-blue-400 focus-within:ring-blue-300 focus-within:ring-opacity-40 dark:focus-within:border-blue-300">
-              <div className="flex flex-wrap justify-between md:flex-row">
-                <input
-                  type="email"
-                  className="p-2 m-1 text-sm text-gray-700 bg-transparent appearance-none focus:outline-none focus:placeholder-transparent"
-                  placeholder="Enter your email"
-                  aria-label="Enter your email"
-                />
-                <button className="w-full px-3 py-2 m-1 text-sm font-medium tracking-wider text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded-md dark:hover:bg-gray-600 dark:bg-gray-800 lg:w-auto hover:bg-gray-700">
-                  subscribe
-                </button>
-              </div>
+     <div className="relative flex flex-col-reverse px-4 py-16 mx-auto lg:block lg:flex-col lg:py-32 xl:py-48 md:px-8 sm:max-w-xl md:max-w-full">
+      <div className="z-0 flex justify-center h-full -mx-4 overflow-hidden lg:pt-24 lg:pb-16 lg:pr-8 xl:pr-0 lg:w-1/2 lg:absolute lg:justify-around lg:bottom-0 lg:left-0 lg:items-center">
+        <img
+          src="https://images.unsplash.com/photo-1571380401583-72ca84994796?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDZ8fG1vYmlsZSUyMHBob25lfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+          className="object-cover object-right w-full h-auto lg:w-auto lg:h-full"
+          alt=""
+        />
+      </div>
+      <div className="relative flex justify-end max-w-xl mx-auto xl:pr-32 lg:max-w-screen-xl">
+        <div className="mb-16 lg:pr-5 lg:max-w-lg lg:mb-0">
+          <div className="max-w-xl mb-6">
+            <div>
+              <p className="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
+                Brand new
+              </p>
             </div>
+            <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
+              We will bring your
+              <br className="hidden md:block" />
+              business{' '}
+              <span className="inline-block text-deep-purple-accent-400">
+                online
+              </span>
+            </h2>
+            <p className="text-base text-gray-700 md:text-lg">
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+              accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+              quae. explicabo.
+            </p>
           </div>
+          <form>
+            <div className="flex flex-col md:flex-row">
+              <input
+                placeholder="Name"
+                required=""
+                type="text"
+                className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none md:mr-2 focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
+              />
+              <input
+                placeholder="Email"
+                required=""
+                type="text"
+                className="flex-grow w-full h-12 px-4 mb-3 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none md:mb-0 focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
+              />
+            </div>
+            <div className="flex items-center mt-4">
+              <button
+                type="submit"
+                className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-black transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+              >
+                Subscribe
+              </button>
+              <a
+                href="/"
+                aria-label=""
+                className="inline-flex items-center font-semibold transition-colors duration-200 text-purple-accent-400 hover:text-purple-800"
+              >
+                Learn more
+              </a>
+            </div>
+          </form>
         </div>
-      </footer>
+      </div>
+    </div>
     </div>
   );
 };

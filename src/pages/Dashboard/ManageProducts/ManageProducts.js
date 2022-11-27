@@ -6,6 +6,7 @@ import ConfirmationModal from "../../Shared/ConfirmationModal/ConfirmatonModal";
 import Loading from "../../Shared/Loading/Loading";
 
 const ManageProducts = () => {
+  // useTitle("Add Service");
   const [deletingProduct, setDeletingProduct] = useState(null);
   const closeModal = () => {
     setDeletingProduct(null);
@@ -72,9 +73,13 @@ const ManageProducts = () => {
               <th></th>
               <th>Avatar</th>
               <th>Brand</th>
-              <th>Email</th>
+              {/* <th>Model</th> */}
+              <th>Name</th>
+              <th>Selling Price</th>
+              <th>Buying Price</th>
               <th>Condition</th>
               <th>Location</th>
+              {/* <th>Authenticity</th> */}
               <th>Action</th>
             </tr>
           </thead>
@@ -93,9 +98,13 @@ const ManageProducts = () => {
                   </div>
                 </td>
                 <td>{product.brand}</td>
-                <td>{product.email}</td>
+                {/* <td>{product.model}</td> */}
+                <td>{product.sellerName}</td>
+                <td>{product.sellingPrice}</td>
+                <td>{product.buyingPrice}</td>
                 <td>{product.condition}</td>
                 <td>{product.Location}</td>
+                {/* <td>{product.Authenticity}</td> */}
                 <td>
                   <label
                     onClick={() => setDeletingProduct(product)}

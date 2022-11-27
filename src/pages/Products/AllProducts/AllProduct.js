@@ -1,5 +1,5 @@
 import React from "react";
-import { FaLock, FaStar } from "react-icons/fa";
+
 import { Link } from "react-router-dom";
 
 const AllProduct = ({ product, setSecondHandProduct }) => {
@@ -8,7 +8,7 @@ const AllProduct = ({ product, setSecondHandProduct }) => {
     model,
     description,
     sellerName,
-    sellerContact,
+    contact,
     storage,
     // features,
     time,
@@ -64,7 +64,7 @@ const AllProduct = ({ product, setSecondHandProduct }) => {
             <strong className="mr-1">Location :</strong> {Location}
           </p>
           <p>
-            <strong className="mr-1">Contact No:</strong> {sellerContact}
+            <strong className="mr-1">Contact No:</strong> {contact}
           </p>
 
           <div className="flex">

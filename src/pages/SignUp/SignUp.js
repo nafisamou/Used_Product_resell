@@ -78,9 +78,25 @@ const SignUp = () => {
   };
 
   return (
-    <div className="h-[550px] flex justify-center items-center shadow-lg mx-auto w-96">
-      <div className="w-96 px-8 py-2">
-        <h2 className="text-xl text-center">Sign Up</h2>
+    <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+      <div className="flex flex-col max-w-screen-lg overflow-hidden bg-white border rounded shadow-sm lg:flex-row sm:mx-auto">
+        <div className="relative lg:w-1/2">
+          <img
+            src="https://images.unsplash.com/photo-1592180631864-aa138f55bc86?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzgxfHxwaG9uZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1760"
+            alt=""
+            className="object-cover w-full lg:absolute h-80 lg:h-full"
+          />
+          <svg
+            className="absolute top-0 right-0 hidden h-full text-white lg:inline-block"
+            viewBox="0 0 20 104"
+            fill="currentColor"
+          >
+            <polygon points="17.3036738 5.68434189e-14 20 5.68434189e-14 20 104 0.824555778 104" />
+          </svg>
+        </div>
+        <div className="h-[650px] flex justify-center items-center mx-auto w-96">
+      <div className="w-96 px-8 py-2 my-5 shadow-xl">
+        <h2 className="text-2xl text-center mt-6 font-serif font-medium">Sign Up</h2>
         <form onSubmit={handleSubmit(handleSignUp)}>
           <div className="form-control w-full max-w-xs">
             <label className="label">
@@ -117,7 +133,7 @@ const SignUp = () => {
 
           <select {...register("roll", {
                         required: "write a valid email"
-                    })}className="select select-bordered text-gray-900 w-full max-w-xs">
+                    })}className="select select-bordered text-gray-900 w-full max-w-xs mt-6">
                     <option  value="buyer" className='text-gray-900'>Buyer</option>
                     <option value="seller"  className='text-gray-900'>Seller</option>
                 </select>
@@ -148,7 +164,7 @@ const SignUp = () => {
             )}
           </div>
           <input
-            className="btn btn-accent w-full my-4"
+            className="btn  w-full my-4"
             value="Sign Up"
             type="submit"
           />
@@ -156,7 +172,7 @@ const SignUp = () => {
         </form>
         <p className="text-center">
           Already have an account{" "}
-          <Link className="text-secondary" to="/login">
+          <Link className="text-blue-600" to="/login">
             Please Login
           </Link>
         </p>
@@ -199,7 +215,10 @@ const SignUp = () => {
         </div>
       </div>
     </div>
+      </div>
+    </div>
   );
 };
 
 export default SignUp;
+

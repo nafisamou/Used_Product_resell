@@ -22,7 +22,7 @@ const DashboardLayout = () => {
         <div className="drawer-content ">
           <Outlet></Outlet>
         </div>
-        <div className="drawer-side bg-white z-10">
+        <div className="drawer-side bg-white text-black">
           <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 text-base-content">
             <li>
@@ -32,7 +32,7 @@ const DashboardLayout = () => {
               {/* {isAdmin && ( */}
                 <>
                   <li>
-                    <Link to="/dashboard/allUser">All user</Link>
+                    <Link to="/dashboard/allUser">All User</Link>
                   </li>
                   <li>
                     <Link to="/dashboard/addProduct">Add a Product</Link>

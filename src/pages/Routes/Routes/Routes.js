@@ -6,6 +6,7 @@ import AddProduct from "../../Dashboard/AddProduct/AddProduct";
 import AllUser from "../../Dashboard/AllUser/AllUser";
 import ManageProducts from "../../Dashboard/ManageProducts/ManageProducts";
 import MyOrders from "../../Dashboard/MyOrders/MyOrders";
+import Payment from "../../Dashboard/Payment/Payment";
 
 import Home from "../../Home/Home/Home";
 import DashboardLayout from "../../Layout/DashboardLayout";
@@ -93,7 +94,7 @@ const router = createBrowserRouter([
           fetch(
             `http://localhost:5000/bookings/${params.id}`
           ),
-        // element: <Payment></Payment>,
+        element: <Payment></Payment>,
       },
     ],
   }, 
