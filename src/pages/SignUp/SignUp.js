@@ -59,14 +59,14 @@ const SignUp = () => {
         .then((data) => {
           console.log("save user", data);
           setCreatedUser(email);
-          // getUserToken(email);
+          getUserToken(email);
           navigate('/')
       
         });
     };
   };
 
- /*  const getUserToken = (email) => {
+  const getUserToken = (email) => {
     fetch(`http://localhost:5000/jwt?email=${email}`)
       .then((res) => res.json())
       .then((data) => {
@@ -76,7 +76,7 @@ const SignUp = () => {
         }
       });
   };
- */
+
   // Google SignIn
   const handleGoogleSignIn = (data) => {
     signInWithGoogle(data.email, data.password)

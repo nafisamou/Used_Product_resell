@@ -23,6 +23,7 @@ const Login = () => {
     if (token) {
       navigate(from, { replace: true });
     }
+    console.log(token)
   const handleLogin = (data) => {
     console.log(data);
     setLoginError("");
@@ -31,7 +32,7 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         setLoginUserEmail(data.email);
-        navigate(from, { replace: true });
+        // navigate(from, { replace: true });
       })
       .catch((error) => {
         toast.error(error.message);
