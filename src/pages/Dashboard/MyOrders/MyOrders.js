@@ -8,7 +8,7 @@ const MyOrders = () => {
   const { user } = useContext(AuthContext);
   //   console.log(user)
   // const [users, setUsers] = useState([]);
-  const url = `http://localhost:5000/bookings?email=${user?.email}`;
+  const url = `https://e-commerce-server-gamma.vercel.app/bookings?email=${user?.email}`;
 
   const { data: bookings = [] } = useQuery({
     queryKey: ["bookings", user?.email],

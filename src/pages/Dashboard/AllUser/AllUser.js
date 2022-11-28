@@ -7,14 +7,16 @@ const AllUsers = () => {
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/users");
+      const res = await fetch(
+        "https://e-commerce-server-gamma.vercel.app/users"
+      );
       const data = await res.json();
       return data;
     },
   });
 
   const handleMakeVerify = (id) => {
-    fetch(`http://localhost:5000/users/verify/${id}`, {
+    fetch(`https://e-commerce-server-gamma.vercel.app/users/verify/${id}`, {
       method: "PUT",
       // headers: {
       //   authorization: `bearer ${localStorage.getItem("token")}`,
@@ -30,7 +32,7 @@ const AllUsers = () => {
       });
   };
   const handleMakeAdmin = (id) => {
-    fetch(`http://localhost:5000/users/admin/${id}`, {
+    fetch(`https://e-commerce-server-gamma.vercel.app/users/admin/${id}`, {
       method: "PUT",
       // headers: {
       //   authorization: `bearer ${localStorage.getItem("token")}`,
@@ -49,7 +51,7 @@ const AllUsers = () => {
   // Deleting:
   const handleDeleteUser = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/users/${id}`, {
+    fetch(`https://e-commerce-server-gamma.vercel.app/users/${id}`, {
       method: "DELETE",
       // headers: {
       //   authorization: `bearer ${localStorage.getItem("token")}`,
@@ -112,7 +114,6 @@ const AllUsers = () => {
                     )}
                     {/* (<><button className="btn btn-xs btn-success">Admin</button></>) */}
                   </>
-             
                 </td>
                 <td>
                   <button

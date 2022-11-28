@@ -22,12 +22,12 @@ const ManageProducts = () => {
     queryFn: async () => {
       try {
         const res = await fetch(
-          "http://localhost:5000/products",
-            // {
-            //   headers: {
-            //     authorization: `bearer ${localStorage.getItem("token")}`,
-            //   },
-            // }
+          "https://e-commerce-server-gamma.vercel.app/products"
+          // {
+          //   headers: {
+          //     authorization: `bearer ${localStorage.getItem("token")}`,
+          //   },
+          // }
         );
         const data = await res.json();
         return data;
@@ -39,12 +39,15 @@ const ManageProducts = () => {
 
   // Deleting:
   const handleDeleteProduct = (product) => {
-    fetch(`http://localhost:5000/products/${product._id}`, {
-      method: "DELETE",
-      // headers: {
-      //   authorization: `bearer ${localStorage.getItem("token")}`,
-      // },
-    })
+    fetch(
+      `https://e-commerce-server-gamma.vercel.app/products/${product._id}`,
+      {
+        method: "DELETE",
+        // headers: {
+        //   authorization: `bearer ${localStorage.getItem("token")}`,
+        // },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount) {

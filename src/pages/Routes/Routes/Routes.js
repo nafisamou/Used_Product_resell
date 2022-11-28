@@ -1,4 +1,3 @@
-
 import { createBrowserRouter } from "react-router-dom";
 import Blog from "../../Blog/Blog";
 import CategoryDetails from "../../Categories/CategoryDetails";
@@ -17,7 +16,7 @@ import Advertisement from "../../Seller/Advertisement/Advertisement";
 import ErrorPage from "../../Shared/ErrorPage/ErrorPage";
 import SignUp from "../../SignUp/SignUp";
 import AdminRoute from "../AdminRoute/AdminRoute";
-import BuyerRoute from "../BuyerRoute.js/BuyerRoute";
+
 
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import SellerRoute from "../SellerRoute/SellerRoute";
@@ -47,77 +46,76 @@ const router = createBrowserRouter([
         path: "/advertisement",
         element: <Advertisement></Advertisement>,
       },
-     
+
       {
         path: "/categories/:id",
         element: <CategoryDetails></CategoryDetails>,
-        loader:({params})=>fetch(`http://localhost:5000/categories/${params.id}`)
+        loader: ({ params }) =>
+          fetch(
+            `https://e-commerce-server-gamma.vercel.app/categories/${params.id}`
+          ),
       },
-     
     ],
   },
-   {
+  {
     path: "/dashboard",
     errorElement: <ErrorPage></ErrorPage>,
     element: (
-      <DashboardLayout></DashboardLayout>
-     /*  <PrivateRoute>
-       
-      </PrivateRoute> */
+   
+       <PrivateRoute>
+          <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
     ),
     children: [
-     /*  {
+      /*  {
         path: "/dashboard",
      
       }, */
       {
         path: "/dashboard/myOrders",
-        element:<MyOrders></MyOrders>,
+        element: <MyOrders></MyOrders>,
       },
       {
         path: "/dashboard/allUser",
         element: (
        
-            <AllUser></AllUser>
-            //  <AdminRoute> <AllUser></AllUser></AdminRoute>
-           
-        
+           <AdminRoute> <AllUser></AllUser></AdminRoute>
         ),
       },
       {
         path: "/dashboard/reports",
         element: (
-       
-            
-            <AdminRoute><ReportedItems></ReportedItems></AdminRoute>
-        
+          <AdminRoute>
+            <ReportedItems></ReportedItems>
+          </AdminRoute>
         ),
       },
       {
         path: "/dashboard/addProduct",
         element: (
-          <AddProduct></AddProduct>
-        //  <SellerRoute><AddProduct></AddProduct> </SellerRoute>
+          <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
+          // <AddProduct></AddProduct>
+          //  <SellerRoute><AddProduct></AddProduct> </SellerRoute>
         ),
       },
       {
         path: "/dashboard/manageProducts",
         element: (
-          <ManageProducts></ManageProducts> 
+          <AddProduct><ManageProducts></ManageProducts></AddProduct>
+          // <ManageProducts></ManageProducts>
           //  <SellerRoute> <ManageProducts></ManageProducts> </SellerRoute>
-          
         ),
       },
       {
         path: "/dashboard/payment/:id",
         loader: ({ params }) =>
           fetch(
-            `http://localhost:5000/bookings/${params.id}`
+            `https://e-commerce-server-gamma.vercel.app/bookings/${params.id}`
           ),
         element: <Payment></Payment>,
       },
     ],
-  }, 
+  },
 ]);
 
 export default router;

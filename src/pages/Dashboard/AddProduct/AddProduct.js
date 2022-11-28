@@ -31,9 +31,9 @@ const AddProduct = () => {
           const product = {
             brand: data.brand,
             // email: data.email,
-          
+
             category_id: data.category_id,
-         
+
             model: data.model,
             description: data.description,
             sellerName: data.sellerName,
@@ -48,7 +48,7 @@ const AddProduct = () => {
           };
           console.log(product);
           //   save product information to the database
-          fetch("http://localhost:5000/products", {
+          fetch("https://e-commerce-server-gamma.vercel.app/products", {
             method: "POST",
             headers: {
               "content-type": "application/json",

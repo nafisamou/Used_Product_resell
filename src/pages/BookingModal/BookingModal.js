@@ -28,7 +28,7 @@ const BookingModal = ({ secondHandProduct, setSecondHandProduct }) => {
       img,
     };
     // console.log(booking);
-    fetch("http://localhost:5000/bookings", {
+    fetch("https://e-commerce-server-gamma.vercel.app/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -112,11 +112,7 @@ const BookingModal = ({ secondHandProduct, setSecondHandProduct }) => {
                 className="input w-full input-bordered"
               />
               <br />
-              <input
-                className="btn  w-full"
-                type="submit"
-                value="Submit"
-              />
+              <input className="btn  w-full" type="submit" value="Submit" />
             </form>
           </div>
         </div>
