@@ -74,8 +74,8 @@ const router = createBrowserRouter([
         element: (
        
             
-            // <AdminRoute></AdminRoute>
-            <AllUser></AllUser>
+             <AdminRoute> <AllUser></AllUser></AdminRoute>
+           
         
         ),
       },
@@ -99,8 +99,8 @@ const router = createBrowserRouter([
         path: "/dashboard/manageProducts",
         element: (
          
-          //  <SellerRoute> </SellerRoute>
-           <ManageProducts></ManageProducts>
+           <SellerRoute> <ManageProducts></ManageProducts> </SellerRoute>
+          
         ),
       },
       {
