@@ -92,27 +92,30 @@ const AllUsers = () => {
                 <td>{user.email}</td>
                 <td>
                   <>
-                    {user?.verification !== "verify" && (
+                    {user?.verification !== "verify" ? (
                       <button
                         onClick={() => handleMakeVerify(user._id)}
-                        className="btn btn-xs btn-secondary "
+                        className="btn btn-xs bg-fuchsia-400 hover:bg-fuchsia-500  text-gray-900 "
                       >
-                        Verify
+                        Make Verify
                       </button>
+                    ) : (
+                      <p className="bg-green-500 btn btn-xs "> Verified </p>
                     )}
                   </>
                 </td>
                 <td>
                   <>
-                    {user?.role !== "admin" && (
+                    {user?.role !== "admin" ? (
                       <button
                         onClick={() => handleMakeAdmin(user._id)}
                         className="btn btn-xs btn-success "
                       >
                         Make Admin
                       </button>
+                    ) : (
+                      <p className="bg-green-700 btn btn-xs">Admin</p>
                     )}
-                    {/* (<><button className="btn btn-xs btn-success">Admin</button></>) */}
                   </>
                 </td>
                 <td>
