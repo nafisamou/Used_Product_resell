@@ -3,8 +3,10 @@ import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 import useAdmin from "../../hook/useAdmin/useAdmin";
+
 import useBuyer from "../../hook/useBuyer/useBuyer";
 import useSeller from "../../hook/useSeller/useSeller";
+
 import Navbar from "../Shared/Navbar/Navbar";
 
 const DashboardLayout = () => {
@@ -41,7 +43,7 @@ const DashboardLayout = () => {
              )} 
             {isBuyer && (<> 
               <li>
-                  <Link to="/dashboard">My Orders</Link>
+                  <Link to="/dashboard/myOrders">My Orders</Link>
                 </li>
              </>)} 
              {isAdmin && (

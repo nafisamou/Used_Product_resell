@@ -60,21 +60,26 @@ const router = createBrowserRouter([
     path: "/dashboard",
     errorElement: <ErrorPage></ErrorPage>,
     element: (
-      <PrivateRoute>
-        <DashboardLayout></DashboardLayout>
-      </PrivateRoute>
+      <DashboardLayout></DashboardLayout>
+     /*  <PrivateRoute>
+       
+      </PrivateRoute> */
     ),
     children: [
-      {
+     /*  {
         path: "/dashboard",
-        element:<BuyerRoute> <MyOrders></MyOrders></BuyerRoute>,
+     
+      }, */
+      {
+        path: "/dashboard/myOrders",
+        element:<MyOrders></MyOrders>,
       },
       {
         path: "/dashboard/allUser",
         element: (
        
-            
-             <AdminRoute> <AllUser></AllUser></AdminRoute>
+            <AllUser></AllUser>
+            //  <AdminRoute> <AllUser></AllUser></AdminRoute>
            
         
         ),
@@ -91,15 +96,15 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/addProduct",
         element: (
-          
-         <SellerRoute><AddProduct></AddProduct> </SellerRoute>
+          <AddProduct></AddProduct>
+        //  <SellerRoute><AddProduct></AddProduct> </SellerRoute>
         ),
       },
       {
         path: "/dashboard/manageProducts",
         element: (
-         
-           <SellerRoute> <ManageProducts></ManageProducts> </SellerRoute>
+          <ManageProducts></ManageProducts> 
+          //  <SellerRoute> <ManageProducts></ManageProducts> </SellerRoute>
           
         ),
       },
