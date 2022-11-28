@@ -5,7 +5,7 @@ import { AuthContext } from "../../contexts/AuthProvider";
 
 const BookingModal = ({ secondHandProduct, setSecondHandProduct }) => {
   const { user } = useContext(AuthContext);
-  const { brand, sellingPrice, img } = secondHandProduct;
+  const { brand, price, img } = secondHandProduct;
   //   console.log(secondHandProduct);
   const handleBooking = (event) => {
     event.preventDefault();
@@ -95,7 +95,7 @@ const BookingModal = ({ secondHandProduct, setSecondHandProduct }) => {
               <input
                 name="price"
                 type="text"
-                defaultValue={sellingPrice}
+                defaultValue={price}
                 disabled
                 className="input w-full input-bordered"
               />
@@ -113,7 +113,7 @@ const BookingModal = ({ secondHandProduct, setSecondHandProduct }) => {
               />
               <br />
               <input
-                className="btn btn-primary w-full"
+                className="btn  w-full"
                 type="submit"
                 value="Submit"
               />

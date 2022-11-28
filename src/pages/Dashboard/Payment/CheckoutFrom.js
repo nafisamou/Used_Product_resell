@@ -12,23 +12,21 @@ const CheckoutForm = ({ booking }) => {
 
   const stripe = useStripe();
   const elements = useElements();
-  const { price, email,brand, _id } = booking;
+  const { price, email, brand, _id } = booking;
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("http://localhost:5000/create-payment-intent",
-    {
+    fetch("http://localhost:5000/create-payment-intent", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
-        // authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        "Content-Type": "application/json",
+        authorization: `bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify({ price }),
-    }
-  )
-    .then((res) => res.json())
-    .then((data) => setClientSecret(data.clientSecret));
-}, [price]);
+    })
+      .then((res) => res.json())
+      .then((data) => setClientSecret(data.clientSecret));
+  }, [price]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -85,8 +83,8 @@ const CheckoutForm = ({ booking }) => {
       fetch("http://localhost:5000/payments", {
         method: "POST",
         headers: {
-          "content-type": "application/json"
-        //   authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          "content-type": "application/json",
+          // authorization: `bearer ${localStorage.getItem("token")}`,
         },
         body: JSON.stringify(payment),
       })
@@ -96,7 +94,7 @@ const CheckoutForm = ({ booking }) => {
           if (data.insertedId) {
             setSuccess("Congrats! your payment completed");
             setTransactionId(paymentIntent.id);
-            toast.success('Payment Successful')
+            toast.success("Payment Successful");
           }
         });
     }

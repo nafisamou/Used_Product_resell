@@ -18,6 +18,7 @@ import SignUp from "../../SignUp/SignUp";
 import AdminRoute from "../AdminRoute/AdminRoute";
 
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import SellerRoute from "../SellerRoute/SellerRoute";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -78,17 +79,15 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/addProduct",
         element: (
-            <AddProduct></AddProduct>
-          // <AdminRoute>
-          // </AdminRoute>
+          <AddProduct></AddProduct>
+        //  <SellerRoute> </SellerRoute>
         ),
       },
       {
         path: "/dashboard/manageProducts",
         element: (
-            <ManageProducts></ManageProducts>
-          // <AdminRoute>
-          // </AdminRoute>
+          <ManageProducts></ManageProducts>
+          // <SellerRoute></SellerRoute>
         ),
       },
       {

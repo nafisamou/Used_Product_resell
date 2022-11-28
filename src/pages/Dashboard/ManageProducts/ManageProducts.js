@@ -22,12 +22,12 @@ const ManageProducts = () => {
     queryFn: async () => {
       try {
         const res = await fetch(
-          "http://localhost:5000/products",
-        //   {
-        //     headers: {
-        //       authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        //     },
-        //   }
+          "http://localhost:5000/products"
+          //   {
+          //     headers: {
+          //       authorization: `bearer ${localStorage.getItem("token")}`,
+          //     },
+          //   }
         );
         const data = await res.json();
         return data;
@@ -39,15 +39,12 @@ const ManageProducts = () => {
 
   // Deleting:
   const handleDeleteProduct = (product) => {
-    fetch(
-      `http://localhost:5000/products/${product._id}`,
-      {
-        method: "DELETE",
-        // headers: {
-        //   authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        // },
-      }
-    )
+    fetch(`http://localhost:5000/products/${product._id}`, {
+      method: "DELETE",
+      headers: {
+        // authorization: `bearer ${localStorage.getItem("token")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount) {
@@ -79,43 +76,48 @@ const ManageProducts = () => {
               <th>Buying Price</th>
               <th>Condition</th>
               <th>Location</th>
+              <th>Post</th>
+              {/* <th>Contact</th> */}
               {/* <th>Authenticity</th> */}
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {products && products?.map((product, i) => (
-              <tr key={product._id}>
-                <th>{i + 1}</th>
-                <td>
-                  <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                      <img
-                        src={product.img}
-                        alt="Avatar Tailwind CSS Component"
-                      />
+            {products &&
+              products?.map((product, i) => (
+                <tr key={product._id}>
+                  <th>{i + 1}</th>
+                  <td>
+                    <div className="avatar">
+                      <div className="mask mask-squircle w-12 h-12">
+                        <img
+                          src={product.img}
+                          alt="Avatar Tailwind CSS Component"
+                        />
+                      </div>
                     </div>
-                  </div>
-                </td>
-                <td>{product.brand}</td>
-                {/* <td>{product.model}</td> */}
-                <td>{product.sellerName}</td>
-                <td>{product.sellingPrice}</td>
-                <td>{product.buyingPrice}</td>
-                <td>{product.condition}</td>
-                <td>{product.Location}</td>
-                {/* <td>{product.Authenticity}</td> */}
-                <td>
-                  <label
-                    onClick={() => setDeletingProduct(product)}
-                    htmlFor="confirmation-modal"
-                    className="btn btn-sm btn-error text-white"
-                  >
-                    Delete
-                  </label>
-                </td>
-              </tr>
-            ))}
+                  </td>
+                  <td>{product.brand}</td>
+                  {/* <td>{product.model}</td> */}
+                  <td>{product.sellerName}</td>
+                  <td>{product.sellingPrice}</td>
+                  <td>{product.buyingPrice}</td>
+                  <td>{product.condition}</td>
+                  <td>{product.Location}</td>
+                  <td>{product.time}</td>
+                  {/* <td>{product.contact}</td> */}
+                  {/* <td>{product.Authenticity}</td> */}
+                  <td>
+                    <label
+                      onClick={() => setDeletingProduct(product)}
+                      htmlFor="confirmation-modal"
+                      className="btn btn-sm btn-error text-white"
+                    >
+                      Delete
+                    </label>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

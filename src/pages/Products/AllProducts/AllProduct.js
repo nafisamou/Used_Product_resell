@@ -8,11 +8,11 @@ const AllProduct = ({ product, setSecondHandProduct }) => {
     description,
     sellerName,
     contact,
-    storage,
-    category_id,
+    // storage,
+    // category_id,
     // features,
     time,
-    sellingPrice,
+    price,
     buyingPrice,
     img,
     Location,
@@ -40,9 +40,9 @@ const AllProduct = ({ product, setSecondHandProduct }) => {
           <p>
             <strong className="mr-1">Model : </strong> {model}
           </p>
-          <p>
+          {/* <p>
             <strong className="mr-1">Storage : </strong> {storage}
-          </p>
+          </p> */}
 
           <p>
             <strong>Description : </strong>
@@ -53,7 +53,7 @@ const AllProduct = ({ product, setSecondHandProduct }) => {
           </p>
           <p className="">
             <strong className="mr-1">Selling Price: </strong>
-            <span className="text-red-500">$</span> {sellingPrice}{" "}
+            <span className="text-red-500">$</span> {price}{" "}
           </p>
           <p className="">
             <strong className="mr-1">Buying Price: </strong>

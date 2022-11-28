@@ -16,9 +16,9 @@ const AllUsers = () => {
   const handleMakeVerify = (id) => {
     fetch(`http://localhost:5000/users/verify/${id}`, {
       method: "PUT",
-      //   headers: {
-      //     authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      //   },
+      // headers: {
+      //   authorization: `bearer ${localStorage.getItem("token")}`,
+      // },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -32,9 +32,9 @@ const AllUsers = () => {
   const handleMakeAdmin = (id) => {
     fetch(`http://localhost:5000/users/admin/${id}`, {
       method: "PUT",
-      //   headers: {
-      //     authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      //   },
+      headers: {
+        authorization: `bearer ${localStorage.getItem("token")}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -51,9 +51,9 @@ const AllUsers = () => {
     console.log(id);
     fetch(`http://localhost:5000/users/${id}`, {
       method: "DELETE",
-      //   headers: {
-      //     authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      //   },
+      headers: {
+        authorization: `bearer ${localStorage.getItem("token")}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -107,7 +107,7 @@ const AllUsers = () => {
                         onClick={() => handleMakeAdmin(user._id)}
                         className="btn btn-xs btn-success "
                       >
-                       Admin
+                        Admin
                       </button>
                     )}
                   </>
