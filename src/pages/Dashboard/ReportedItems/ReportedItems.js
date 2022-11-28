@@ -3,7 +3,7 @@ import React from 'react';
 const ReportedItems = () => {
     return (
         <div>
-            Reports
+            <h2 className='text-center'>Reports</h2>
         </div>
     );
 };
