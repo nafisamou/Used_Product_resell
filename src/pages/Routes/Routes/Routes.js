@@ -2,6 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import Blog from "../../Blog/Blog";
 import CategoryDetails from "../../Categories/CategoryDetails";
 import AddProduct from "../../Dashboard/AddProduct/AddProduct";
+import AllBuyer from "../../Dashboard/AllBuyer/AllBuyer";
+import AllSeller from "../../Dashboard/AllSeller/AllSeller";
 import AllUser from "../../Dashboard/AllUser/AllUser";
 import ManageProducts from "../../Dashboard/ManageProducts/ManageProducts";
 import MyOrders from "../../Dashboard/MyOrders/MyOrders";
@@ -19,7 +21,7 @@ import AdminRoute from "../AdminRoute/AdminRoute";
 
 
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
-import SellerRoute from "../SellerRoute/SellerRoute";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -67,10 +69,7 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
-      /*  {
-        path: "/dashboard",
-     
-      }, */
+      
       {
         path: "/dashboard/myOrders",
         element: <MyOrders></MyOrders>,
@@ -80,6 +79,20 @@ const router = createBrowserRouter([
         element: (
        
            <AdminRoute> <AllUser></AllUser></AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/allSeller",
+        element: (
+       
+           <AdminRoute> <AllSeller></AllSeller></AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/allBuyer",
+        element: (
+       
+           <AdminRoute> <AllBuyer></AllBuyer></AdminRoute>
         ),
       },
       {
@@ -93,17 +106,18 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/addProduct",
         element: (
-          <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
-          // <AddProduct></AddProduct>
-          //  <SellerRoute><AddProduct></AddProduct> </SellerRoute>
+     
+          <AddProduct></AddProduct>
+     
         ),
       },
       {
         path: "/dashboard/manageProducts",
         element: (
-          <AddProduct><ManageProducts></ManageProducts></AddProduct>
-          // <ManageProducts></ManageProducts>
-          //  <SellerRoute> <ManageProducts></ManageProducts> </SellerRoute>
+          <ManageProducts></ManageProducts>
+          
+        
+      
         ),
       },
       {

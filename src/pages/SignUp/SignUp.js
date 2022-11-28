@@ -82,7 +82,7 @@ const SignUp = () => {
       .then((result) => {
         console.log(result.user);
         setCreatedUser(data.email);
-        // getUserToken(data.email);
+        getUserToken(data.email);
         navigate(from, { replace: true });
       })
       .catch((error) => {

@@ -15,7 +15,7 @@ const Banner = () => {
             can imagine{' '}
             <span className="inline-block text-deep-purple-accent-400">is real</span>
           </h2>
-          <p className="text-gray-700 text-base md:text-lg">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae. explicabo.</p>
+          <p className="text-gray-700 text-base md:text-lg">Mobile gadgets in mobiledokan.com can be found by brands, price range and so on. A blog section is also there to keep you informed about the latest news from the mobile phone industry. You may also check our where to buy page to get some idea about different buying possibilities.</p>
         </div>
         <div className="flex items-center space-x-3">
           <a href="/" className="w-32 transition duration-300 hover:shadow-lg">

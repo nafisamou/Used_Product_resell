@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { Button, InputGroup } from "reactstrap";
 import React, { useContext } from "react";
-
+import img from '../../../assets/resell.png'
 
 import { ThemeContext, themes } from "../../../contexts/ThemeContext.js";
 import { AuthContext } from "../../../contexts/AuthProvider";
@@ -136,8 +136,8 @@ const Navbar = () => {
         </div>
         <ul>
           {" "}
-          <Link to="/" className="btn btn-ghost normal-case text-xl">
-            Reselling Products
+          <Link to="/" title="Mobile Dokan" className="btn btn-ghost normal-case text-xl">
+           <img className="w-6 h-6 mx-3" src={img} alt="" /> Mobile Dokan
           </Link>
         </ul>
       </div>
