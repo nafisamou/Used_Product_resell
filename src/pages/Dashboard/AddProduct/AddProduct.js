@@ -1,34 +1,19 @@
-import { useQuery } from "@tanstack/react-query";
 import React from "react";
 
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
-import Loading from "../../Shared/Loading/Loading";
-
 const AddProduct = () => {
-  // const {setLoading} = useContext(AuthContext)
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  // const[loading, setLoading] = useState(false)
+
   const imageHostKey = process.env.REACT_APP_imgbb_key;
   //   console.log(imageHostKey);
   const navigate = useNavigate();
-  /* const { data: options, isLoading,refetch } = useQuery({
-    queryKey: ["options"],
-    queryFn: async () => {
-      const res = await fetch(
-        "http://localhost:5000/categoriesOptions"
-      );
-      const data = await res.json();
-      return data;
-    },
-  }); */
 
   const handleAddProduct = (data) => {
     const img = data.img[0];
@@ -46,13 +31,13 @@ const AddProduct = () => {
           const product = {
             brand: data.brand,
             // email: data.email,
-            // category_id: data.brand,
+          
             category_id: data.category_id,
-            // options: data.options,
+         
             model: data.model,
             description: data.description,
             sellerName: data.sellerName,
-            price: data.sellingPrice,
+            price: data.price,
             buyingPrice: data.buyingPrice,
             Authenticity: data.Authenticity,
             condition: data.condition,
@@ -82,10 +67,6 @@ const AddProduct = () => {
         }
       });
   };
-
-  /*   if(isLoading){
-  <Loading></Loading>
-  }  */
 
   return (
     <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
@@ -148,22 +129,7 @@ const AddProduct = () => {
                   </select>
                 </div>
               }
-              {/*  <div className="form-control w-full max-w-xs">
-            <label className="label">
-              {" "}
-              <span className="label-text">Category</span>
-            </label>
-            <select
-              {...register("category_id")}
-              className="select input-bordered w-full max-w-xs text-black"
-            >  <option disabled selected>Select Your Category</option>
-              {options && options?.map((option) => (
-                <option key={option._id} value={option.brand}>
-                  {option.brand}
-                </option>
-              ))}
-            </select>
-          </div> */}
+
               <div className="form-control w-full max-w-xs">
                 <label className="label">
                   {" "}

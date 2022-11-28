@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../contexts/AuthProvider";
-import useToken from "../../hook/useToken.js/useToken";
+import useToken from "../../hook/useToken/useToken";
 
 
 const Login = () => {
@@ -46,6 +46,7 @@ const Login = () => {
         console.log(result.user);
        setLoginUserEmail(data.email)
         navigate(from, { replace: true });
+
       })
       .catch((error) => {
         toast.error(error.message);
@@ -96,10 +97,10 @@ const Login = () => {
                 </svg>
               </a>
             </div>
-            <div className="w-full max-w-xl xl:px-8 xl:w-5/12">
+            <div className="w-96 max-w-xl xl:px-8 xl:w-5/12">
               <div className="bg-white rounded shadow-2xl p-7 sm:p-10">
                 <div className="">
-                  <div className="w-96 p-7">
+                  <div className=" p-5">
                     <h2 className="text-xl text-center">Login</h2>
                     <form onSubmit={handleSubmit(handleLogin)}>
                       <div className="form-control w-full max-w-xs">
@@ -163,7 +164,7 @@ const Login = () => {
       </select>
     </div> */}
                       <input
-                        className="btn btn-primary w-full my-2"
+                        className="btn  w-full my-2"
                         value="Login"
                         type="submit"
                       />

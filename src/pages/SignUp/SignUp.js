@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
-import useToken from "../../hook/useToken.js/useToken";
+import useToken from "../../hook/useToken/useToken";
 
 const SignUp = () => {
   const {
@@ -30,7 +30,7 @@ const SignUp = () => {
         const user = result.user;
         console.log(user);
         toast.success("User Created Successfully.");
-        navigate("/");
+
         const userInfo = {
           displayName: data.name,
           photoURL: data.photo,
@@ -57,20 +57,38 @@ const SignUp = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log("test", data);
-          setCreatedUser(data.email);
+          console.log("save user", data);
+          setCreatedUser(email);
+          // getUserToken(email);
+          navigate('/')
+      
         });
     };
   };
 
+ /*  const getUserToken = (email) => {
+    fetch(`http://localhost:5000/jwt?email=${email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.token) {
+          localStorage.setItem("token", data.token);
+          navigate("/");
+        }
+      });
+  };
+ */
   // Google SignIn
-  const handleGoogleSignIn = () => {
-    signInWithGoogle()
+  const handleGoogleSignIn = (data) => {
+    signInWithGoogle(data.email, data.password)
       .then((result) => {
         console.log(result.user);
+        setCreatedUser(data.email);
+        // getUserToken(data.email);
         navigate(from, { replace: true });
       })
-      .catch((error) => toast.error(error.message));
+      .catch((error) => {
+        toast.error(error.message);
+      });
   };
 
   return (

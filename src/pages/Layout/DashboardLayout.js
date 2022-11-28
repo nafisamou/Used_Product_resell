@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
-import useAdmin from "../../hook/useAdmin.js/useAdmin";
+import useAdmin from "../../hook/useAdmin/useAdmin";
+import useBuyer from "../../hook/useBuyer/useBuyer";
 import useSeller from "../../hook/useSeller/useSeller";
 import Navbar from "../Shared/Navbar/Navbar";
 
@@ -10,6 +11,7 @@ const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
   const [isAdmin] = useAdmin(user?.email);
   const [isSeller] = useSeller(user?.email);
+  const [isBuyer] = useBuyer(user?.email)
   return (
     <div>
       <Navbar></Navbar>
@@ -25,25 +27,32 @@ const DashboardLayout = () => {
         <div className="drawer-side bg-white text-black">
           <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 text-base-content">
-            <li>
-              <Link to="/dashboard">My Orders</Link>
-            </li>
-
-            {isSeller && (
+             {isSeller && ( 
               <>
                 <li>
                   <Link to="/dashboard/addProduct">Add a Product</Link>
                 </li>
 
                 <li>
-                  <Link to="/dashboard/manageProducts">Manage Product</Link>
+                  <Link to="/dashboard/manageProducts">My Product</Link>
                 </li>
+               
               </>
-            )}
-            {isAdmin && (
+             )} 
+            {isBuyer && (<> 
+              <li>
+                  <Link to="/dashboard">My Orders</Link>
+                </li>
+             </>)} 
+             {isAdmin && (
+             <>
               <li>
                 <Link to="/dashboard/allUser">All User</Link>
               </li>
+              <li>
+                <Link to="/dashboard/reports">Reported Items</Link>
+              </li>
+             </>
             )}
           </ul>
         </div>

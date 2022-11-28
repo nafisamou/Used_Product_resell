@@ -22,12 +22,12 @@ const ManageProducts = () => {
     queryFn: async () => {
       try {
         const res = await fetch(
-          "http://localhost:5000/products"
-          //   {
-          //     headers: {
-          //       authorization: `bearer ${localStorage.getItem("token")}`,
-          //     },
-          //   }
+          "http://localhost:5000/products",
+            // {
+            //   headers: {
+            //     authorization: `bearer ${localStorage.getItem("token")}`,
+            //   },
+            // }
         );
         const data = await res.json();
         return data;
@@ -41,9 +41,9 @@ const ManageProducts = () => {
   const handleDeleteProduct = (product) => {
     fetch(`http://localhost:5000/products/${product._id}`, {
       method: "DELETE",
-      headers: {
-        // authorization: `bearer ${localStorage.getItem("token")}`,
-      },
+      // headers: {
+      //   authorization: `bearer ${localStorage.getItem("token")}`,
+      // },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -100,7 +100,7 @@ const ManageProducts = () => {
                   <td>{product.brand}</td>
                   {/* <td>{product.model}</td> */}
                   <td>{product.sellerName}</td>
-                  <td>{product.sellingPrice}</td>
+                  <td>{product.price}</td>
                   <td>{product.buyingPrice}</td>
                   <td>{product.condition}</td>
                   <td>{product.Location}</td>

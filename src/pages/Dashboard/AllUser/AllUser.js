@@ -32,9 +32,9 @@ const AllUsers = () => {
   const handleMakeAdmin = (id) => {
     fetch(`http://localhost:5000/users/admin/${id}`, {
       method: "PUT",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("token")}`,
-      },
+      // headers: {
+      //   authorization: `bearer ${localStorage.getItem("token")}`,
+      // },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -51,9 +51,9 @@ const AllUsers = () => {
     console.log(id);
     fetch(`http://localhost:5000/users/${id}`, {
       method: "DELETE",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("token")}`,
-      },
+      // headers: {
+      //   authorization: `bearer ${localStorage.getItem("token")}`,
+      // },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -90,7 +90,7 @@ const AllUsers = () => {
                 <td>{user.email}</td>
                 <td>
                   <>
-                    {user?.role !== "verify" && (
+                    {user?.verification !== "verify" && (
                       <button
                         onClick={() => handleMakeVerify(user._id)}
                         className="btn btn-xs btn-secondary "
@@ -107,10 +107,12 @@ const AllUsers = () => {
                         onClick={() => handleMakeAdmin(user._id)}
                         className="btn btn-xs btn-success "
                       >
-                        Admin
+                        Make Admin
                       </button>
                     )}
+                    {/* (<><button className="btn btn-xs btn-success">Admin</button></>) */}
                   </>
+             
                 </td>
                 <td>
                   <button

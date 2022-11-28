@@ -7,6 +7,7 @@ import AllUser from "../../Dashboard/AllUser/AllUser";
 import ManageProducts from "../../Dashboard/ManageProducts/ManageProducts";
 import MyOrders from "../../Dashboard/MyOrders/MyOrders";
 import Payment from "../../Dashboard/Payment/Payment";
+import ReportedItems from "../../Dashboard/ReportedItems/ReportedItems";
 
 import Home from "../../Home/Home/Home";
 import DashboardLayout from "../../Layout/DashboardLayout";
@@ -16,6 +17,7 @@ import Advertisement from "../../Seller/Advertisement/Advertisement";
 import ErrorPage from "../../Shared/ErrorPage/ErrorPage";
 import SignUp from "../../SignUp/SignUp";
 import AdminRoute from "../AdminRoute/AdminRoute";
+import BuyerRoute from "../BuyerRoute.js/BuyerRoute";
 
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import SellerRoute from "../SellerRoute/SellerRoute";
@@ -65,29 +67,40 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard",
-        element: <MyOrders></MyOrders>,
+        element:<BuyerRoute> <MyOrders></MyOrders></BuyerRoute>,
       },
       {
         path: "/dashboard/allUser",
         element: (
        
             
-            <AdminRoute><AllUser></AllUser></AdminRoute>
+            // <AdminRoute></AdminRoute>
+            <AllUser></AllUser>
+        
+        ),
+      },
+      {
+        path: "/dashboard/reports",
+        element: (
+       
+            
+            <AdminRoute><ReportedItems></ReportedItems></AdminRoute>
         
         ),
       },
       {
         path: "/dashboard/addProduct",
         element: (
-          <AddProduct></AddProduct>
-        //  <SellerRoute> </SellerRoute>
+          
+         <SellerRoute><AddProduct></AddProduct> </SellerRoute>
         ),
       },
       {
         path: "/dashboard/manageProducts",
         element: (
-          <ManageProducts></ManageProducts>
-          // <SellerRoute></SellerRoute>
+         
+          //  <SellerRoute> </SellerRoute>
+           <ManageProducts></ManageProducts>
         ),
       },
       {
