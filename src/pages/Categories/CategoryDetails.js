@@ -10,7 +10,7 @@ const CategoryDetails = () => {
   // console.log(products)
   return (
     <div className="grid grid-cols-1 gap-2 ">
-      {products.map((product) => (
+      {products?.map((product) => (
         <AllProduct
           key={product._id}
           product={product}

@@ -15,6 +15,8 @@ import Login from "../../Login/Login";
 import Advertisement from "../../Seller/Advertisement/Advertisement";
 import ErrorPage from "../../Shared/ErrorPage/ErrorPage";
 import SignUp from "../../SignUp/SignUp";
+import AdminRoute from "../AdminRoute/AdminRoute";
+
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 const router = createBrowserRouter([
   {
@@ -68,7 +70,8 @@ const router = createBrowserRouter([
         path: "/dashboard/allUser",
         element: (
        
-            <AllUser></AllUser>
+            
+            <AdminRoute><AllUser></AllUser></AdminRoute>
         
         ),
       },

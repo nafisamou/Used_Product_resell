@@ -1,6 +1,5 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
 
 const AllProduct = ({ product, setSecondHandProduct }) => {
   const {
@@ -10,6 +9,7 @@ const AllProduct = ({ product, setSecondHandProduct }) => {
     sellerName,
     contact,
     storage,
+    category_id,
     // features,
     time,
     sellingPrice,

@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
+import toast from "react-hot-toast";
 
-const MyAppointment = () => {
+const MyOrders = () => {
   const { user } = useContext(AuthContext);
   //   console.log(user)
-
+  const [users, setUsers] = useState([]);
   const url = `http://localhost:5000/bookings?email=${user?.email}`;
 
   const { data: bookings = [] } = useQuery({
@@ -18,6 +19,8 @@ const MyAppointment = () => {
     },
   });
   //   console.log(bookings);
+
+  
   return (
     <div>
       <h1 className="text-3xl">My Orders</h1>
@@ -32,6 +35,7 @@ const MyAppointment = () => {
               <th>Location</th>
               <th>Price</th>
               <th>Payment</th>
+            
             </tr>
           </thead>
           <tbody>
@@ -52,11 +56,11 @@ const MyAppointment = () => {
                     </div>
                   </div>
                 </td>
-                <td>{booking.phone}</td>
-                <td>{booking.location}</td>
-                <td>{booking.price && <p>${booking.price}</p>}</td>
+                <td>{booking?.phone}</td>
+                <td>{booking?.location}</td>
+                <td>{booking?.price && <p>${booking.price}</p>}</td>
                 <td>
-                  {booking.price && !booking.paid && (
+                  {booking?.price && !booking?.paid && (
                     <Link
                       to={`/dashboard/payment/${booking._id}`}
                       className="btn btn-xs btn-success text-white"
@@ -64,12 +68,13 @@ const MyAppointment = () => {
                       Pay
                     </Link>
                   )}
-                  {booking.price && booking.paid && (
+                  { booking.paid && (
                     <button className="btn btn-xs text-white  bg-green-600">
                       Paid
                     </button>
                   )}
                 </td>
+              
               </tr>
             ))}
           </tbody>
@@ -79,4 +84,4 @@ const MyAppointment = () => {
   );
 };
 
-export default MyAppointment;
+export default MyOrders;

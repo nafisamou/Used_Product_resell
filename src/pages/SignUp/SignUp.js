@@ -39,7 +39,7 @@ const SignUp = () => {
         updateUserProfile(userInfo)
           .then(() => {
             // saveUser(data.name, data.email,data.roll );
-            saveUser(data.name,data.email, data.roll)
+            saveUser(data.name,data.email, data.role)
           })
           .catch((err) => console.log(err));
       })
@@ -50,8 +50,8 @@ const SignUp = () => {
 
    
 
-      const saveUser = (name, email, roll) => {
-      const user = { name, email,roll };
+      const saveUser = (name, email, role) => {
+      const user = { name, email,role };
       fetch("http://localhost:5000/users", {
         method: "POST",
         headers: {
@@ -131,7 +131,7 @@ const SignUp = () => {
             )}
           </div>
 
-          <select {...register("roll", {
+          <select {...register("role", {
                         required: "write a valid email"
                     })}className="select select-bordered text-gray-900 w-full max-w-xs mt-6">
                     <option  value="buyer" className='text-gray-900'>Buyer</option>
