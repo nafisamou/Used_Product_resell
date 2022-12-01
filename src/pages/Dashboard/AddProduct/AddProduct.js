@@ -30,7 +30,7 @@ const AddProduct = () => {
           //   console.log(imgData.data.url);
           const product = {
             brand: data.brand,
-            // email: data.email,
+        
 
             category_id: data.category_id,
 
@@ -69,7 +69,217 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+    <section className="p-6 bg-gray-300 dark:text-gray-50">
+    <form noValidate="" action="" className="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid" onSubmit={handleSubmit(handleAddProduct)}>
+      <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-900">
+        <div className="space-y-2 col-span-full lg:col-span-1">
+          <p className="font-medium">Add Product</p>
+          <p className="text-xs">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci fuga autem eum!</p>
+        </div>
+        <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
+          <div className="col-span-full sm:col-span-3">
+          <label htmlFor="brand" className="text-sm">Brand</label>
+                <input
+                  type="name"
+                  {...register("brand", {
+                    required: "Brand Name is Required",
+                  })}
+                  className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                />
+                {errors.brand && (
+                  <p className="text-red-500">{errors.brand.message}</p>
+                )}
+          </div>
+         
+          <div className="col-span-full sm:col-span-3">
+            <label htmlFor="Model" className="text-sm">Model</label>
+            <input
+                  type="text"
+                  {...register("model", {
+                    required: true,
+                  })}
+                  className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                />
+                {errors.model && (
+                  <p className="text-red-500">{errors.model.message}</p>
+                )}
+          </div>
+          <div className="col-span-full sm:col-span-3">
+            <label htmlFor="select" className="text-sm">Select Your Category</label>
+            <select 
+                    {...register("category_id", {
+                      required: true,
+                    })}
+                    className="select select-bordered  focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900 w-full rounded-md mt-6"
+                  >
+                    <option value="01" className="text-gray-900">
+                      Category-1
+                    </option>
+                    <option value="02" className="text-gray-900">
+                      Category-2
+                    </option>
+                    <option value="03" className="text-gray-900">
+                      Category-3
+                    </option>
+                  </select>
+          </div>
+          <div className="col-span-full ">
+            <label htmlFor="description" className="text-sm">Description</label>
+           <input
+                  type="text"
+                  {...register("description", {
+                    required: true,
+                  })}
+                  className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                />
+                {errors.description && (
+                  <p className="text-red-500">{errors.description.message}</p>
+                )}
+          </div>
+          <div className="col-span-full sm:col-span-2">
+            <label htmlFor="sellerName" className="text-sm">Seller Name</label>
+            <input
+                  type="name"
+                  {...register("sellerName", {
+                    required: true,
+                  })}
+                  className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                />
+                {errors.sellerName && (
+                  <p className="text-red-500">{errors.sellerName.message}</p>
+                )}
+          </div>
+          <div className="col-span-full sm:col-span-2">
+            <label htmlFor="price" className="text-sm">Selling Price</label>
+            <input
+                  type="number"
+                  {...register("price", {
+                    required: true,
+                  })}
+                  className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                />
+                {errors.price && (
+                  <p className="text-red-500">{errors.price.message}</p>
+                )}
+          </div>
+          <div className="col-span-full sm:col-span-2">
+          <label htmlFor="buyingPrice" className="text-sm">Buying Price</label>
+          <input
+                  type="number"
+                  {...register("buyingPrice", {
+                    required: true,
+                  })}
+                  className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                />
+                {errors.price && (
+                  <p className="text-red-500">{errors.price.message}</p>
+                )}
+          </div>
+        </div>
+      </fieldset>
+      <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-900">
+        <div className="space-y-2 col-span-full lg:col-span-1">
+          <p className="font-medium">Profile</p>
+          <p className="text-xs">Adipisci fuga autem eum!</p>
+        </div>
+        <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
+          <div className="col-span-full sm:col-span-3">
+          <label htmlFor="contact" className="text-sm">Contact</label>
+        <input
+                  type="contact"
+                  {...register("contact", {
+                    required: true,
+                  })}
+                  className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                />
+                {errors.contact && (
+                  <p className="text-red-500">{errors.contact.message}</p>
+                )}
+          </div>
+          <div className="col-span-full sm:col-span-3">
+          <label htmlFor="condition" className="text-sm">Condition</label>
+            <input
+                  type="text"
+                  {...register("condition", {
+                    required: true,
+                  })}
+                  className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
+                />
+                {errors.condition && (
+                  <p className="text-red-500">{errors.condition.message}</p>
+                )}
+          </div>
+          <div className="col-span-full sm:col-span-3">
+            <label htmlFor="Location" className="text-sm">Location</label>
+            <input
+                  type="text"
+                  {...register("Location", {
+                    required: true,
+                  })}
+                  className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-90"
+                />
+                {errors.Location && (
+                  <p className="text-red-500">{errors.Location.message}</p>
+                )}
+          </div>
+          <div className="col-span-full sm:col-span-3">
+          <label htmlFor="Time" className="text-sm">Time</label>
+          <input
+                  type="text"
+                  {...register("time", {
+                    required: true,
+                  })}
+                  className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-90"
+                />
+                {errors.time && (
+                  <p className="text-red-500">{errors.time.message}</p>
+                )}
+          </div>
+          <div className="col-span-full sm:col-span-3">
+          <label htmlFor="Authenticity" className="text-sm">Authenticity</label>
+          <input
+                  type="text"
+                  {...register("Authenticity", {
+                    required: true,
+                  })}
+                  className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-90"
+                />
+                {errors.Authenticity && (
+                  <p className="text-red-500">{errors.Authenticity.message}</p>
+                )}
+          </div>
+          <div className="col-span-full">
+            <label htmlFor="photo" className="text-sm">Photo</label>
+            <input
+                  type="file"
+                  {...register("img", {
+                    required: "Photo is Required",
+                  })}
+                  className="w-full  rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-90"
+                />
+                {errors.img && (
+                  <p className="text-red-500">{errors.img.message}</p>
+                )}
+          </div>
+          <div className="col-span-full mx-auto w-1/2">
+          <input 
+                className="btn form-control w-full max-w-xs mt-4"
+                value="Add Product"
+                type="submit"
+              />
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </section>
+  );
+};
+
+export default AddProduct;
+
+/* 
+
+ <div className="bg-white py-12 md:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24">
       <div className="grid gap-10 lg:grid-cols-2">
         <div className="w-full px-5 shadow-lg mx-auto text-center">
           <div className=" p-7">
@@ -322,7 +532,5 @@ const AddProduct = () => {
         </div>
       </div>
     </div>
-  );
-};
 
-export default AddProduct;
+*/

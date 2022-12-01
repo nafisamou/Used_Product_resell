@@ -1,6 +1,7 @@
 import React from 'react';
 import Categories from '../../Categories/Categories';
-import Advertisement from '../../Seller/Advertisement/Advertisement';
+import Add from '../../Dashboard/Advertise/Add';
+
 import Article from '../Article/Article';
 import Banner from '../Banner/Banner';
 import Review from '../Review/Review';
@@ -11,12 +12,12 @@ const Home = () => {
         <div className='mx-5'>
             <Banner></Banner>
             <Categories></Categories>
-            <Advertisement></Advertisement>
-            <Article></Article>
+            <Add></Add>
+            {/* <Article></Article> */}
             <Subscribe></Subscribe>
             <Review></Review>
-        </div>
+        </div>   
     );
 };
 
-export default Home;
+export default Home; 

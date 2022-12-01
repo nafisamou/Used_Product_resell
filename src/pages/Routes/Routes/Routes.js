@@ -8,17 +8,17 @@ import AllUser from "../../Dashboard/AllUser/AllUser";
 import ManageProducts from "../../Dashboard/ManageProducts/ManageProducts";
 import MyOrders from "../../Dashboard/MyOrders/MyOrders";
 import Payment from "../../Dashboard/Payment/Payment";
-import ReportedItems from "../../Dashboard/ReportedItems/ReportedItems";
 
 import Home from "../../Home/Home/Home";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import Main from "../../Layout/Main";
 import Login from "../../Login/Login";
-import Advertisement from "../../Seller/Advertisement/Advertisement";
+
+import Wishlist from "../../Seller/Wishlist/Wishlist";
+
 import ErrorPage from "../../Shared/ErrorPage/ErrorPage";
 import SignUp from "../../SignUp/SignUp";
 import AdminRoute from "../AdminRoute/AdminRoute";
-
 
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
@@ -44,10 +44,6 @@ const router = createBrowserRouter([
         path: "/blog",
         element: <Blog></Blog>,
       },
-      {
-        path: "/advertisement",
-        element: <Advertisement></Advertisement>,
-      },
 
       {
         path: "/categories/:id",
@@ -63,62 +59,62 @@ const router = createBrowserRouter([
     path: "/dashboard",
     errorElement: <ErrorPage></ErrorPage>,
     element: (
-   
-       <PrivateRoute>
-          <DashboardLayout></DashboardLayout>
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
       </PrivateRoute>
     ),
     children: [
-      
       {
         path: "/dashboard/myOrders",
         element: <MyOrders></MyOrders>,
       },
       {
+        path: "/dashboard/wishlist",
+
+        element: <Wishlist />,
+      },
+      {
         path: "/dashboard/allUser",
         element: (
-       
-           <AdminRoute> <AllUser></AllUser></AdminRoute>
+          <AdminRoute>
+            {" "}
+            <AllUser></AllUser>
+          </AdminRoute>
         ),
       },
       {
         path: "/dashboard/allSeller",
         element: (
-       
-           <AdminRoute> <AllSeller></AllSeller></AdminRoute>
+          <AdminRoute>
+            {" "}
+            <AllSeller></AllSeller>
+          </AdminRoute>
         ),
       },
       {
         path: "/dashboard/allBuyer",
         element: (
-       
-           <AdminRoute> <AllBuyer></AllBuyer></AdminRoute>
+          <AdminRoute>
+            {" "}
+            <AllBuyer></AllBuyer>
+          </AdminRoute>
         ),
       },
-      {
+      /* {
         path: "/dashboard/reports",
         element: (
           <AdminRoute>
             <ReportedItems></ReportedItems>
           </AdminRoute>
         ),
-      },
+      }, */
       {
         path: "/dashboard/addProduct",
-        element: (
-     
-          <AddProduct></AddProduct>
-     
-        ),
+        element: <AddProduct></AddProduct>,
       },
       {
         path: "/dashboard/manageProducts",
-        element: (
-          <ManageProducts></ManageProducts>
-          
-        
-      
-        ),
+        element: <ManageProducts></ManageProducts>,
       },
       {
         path: "/dashboard/payment/:id",

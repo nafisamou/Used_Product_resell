@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
+import MyCart from "../MyCart/MyCart";
 // import toast from "react-hot-toast";
 
 const MyOrders = () => {
@@ -24,10 +25,19 @@ const MyOrders = () => {
   });
   //   console.log(bookings);
 
+  
   return (
     <div>
-      <h1 className="text-3xl">My Orders</h1>
-      <div className="overflow-x-auto">
+   
+
+      <div className="flex flex-col max-w-4xl px-6 py-2 space-y-4 sm:p-10 bg-gray-200 text-gray-900 mx-auto ">
+	<h2 className="text-xl font-semibold my-8 px-4">Your cart</h2>
+  {bookings?.map((booking)=><MyCart key={booking._id} booking = {booking}></MyCart>)}
+</div>
+
+
+
+     {/*  <div className="overflow-x-auto">
         <table className="table w-full my-7">
           <thead>
             <tr>
@@ -80,7 +90,7 @@ const MyOrders = () => {
             ))}
           </tbody>
         </table>
-      </div>
+      </div> */}
     </div>
   );
 };

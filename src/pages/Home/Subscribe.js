@@ -51,7 +51,7 @@ const Subscribe = () => {
             <div className="flex items-center mt-4">
               <button
                 type="submit"
-                className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-black transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-black transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-gray-300 hover:text-gray-800 focus:shadow-outline focus:outline-none"
               >
                 Subscribe
               </button>

@@ -33,19 +33,20 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      <li>{/* <Link to="/advertisement">Advertisement</Link> */}</li>
+      
 
       <li>
         {" "}
         {user?.uid ? (
           <>
-            <Link to="/advertisement"title="Advertisement" className="font-medium text-xl">Advertisement</Link>
+           
             <Link to="/dashboard"title="Dashboard" className="font-medium text-xl">Dashboard</Link>
+          
             
-            <span className="lg:font-medium lg:text-[17px] lg:block hidden mt-3">{user?.displayName}</span>
+            <span className="lg:font-medium lg:block hidden mt-4  lg:text-xl">{user?.displayName}</span>
             <Link
               title="Logout"
-              className="btn btn-link font-medium
+              className=" font-medium text-xl
        "
               onClick={handleLogOut}
             >
@@ -58,7 +59,7 @@ const Navbar = () => {
               <Link
                 to="/login"
                 title="LogIn"
-                className=" lg:font-medium btn btn-link"
+                className=" lg:font-medium text-xl "
               >
                 Login
               </Link>
@@ -78,7 +79,7 @@ const Navbar = () => {
         </Link>
       </li>
       <li>
-        <InputGroup className="lg:block hidden">
+      <InputGroup className="lg:block hidden">
           <ThemeContext.Consumer>
             {({ changeTheme }) => (
               <Button
@@ -136,9 +137,9 @@ const Navbar = () => {
         </div>
         <ul>
           {" "}
-          <Link to="/" title="Mobile Dokan" className="btn btn-ghost normal-case text-xl">
-           <img className="w-6 h-6 mx-3" src={img} alt="" /> Mobile Dokan
-          </Link>
+         <div className="flex justify-center items-center"> <Link to="/" title="Mobile Dokan" className="btn btn-ghost normal-case text-xl ">
+           <span><img className="w-6 h-6 mx-3" src={img} alt="" /></span> <span>Mobile Dokan</span>
+          </Link></div>
         </ul>
       </div>
       <div className="navbar-center hidden lg:flex ">
