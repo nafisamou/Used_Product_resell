@@ -11,7 +11,7 @@ const Add = () => {
     fetch("https://e-commerce-server-gamma.vercel.app/advertise")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setAddInfo(data);
         setLoading(false);
       });
@@ -21,7 +21,7 @@ const Add = () => {
   }
   return (
     <div className="my-20 ">
-      <h1 className="text-center text-2xl font-sans font-medium my-5">Here is Your Advertise of showing products</h1>
+      <h1 className="text-center text-2xl font-sans font-medium my-5 font-serif">Here is Your Advertise of showing products</h1>
     <div className="relative flex items-center justify-center w-full    text-gray-50 ">
    
 

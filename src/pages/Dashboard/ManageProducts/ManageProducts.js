@@ -43,8 +43,8 @@ const ManageProducts = () => {
  
  
   return (
-    <div>
-      <h2 className="text-center text-3xl py-10">
+    <div className="mx-10">
+      <h2 className="text-center text-3xl py-10 ">
         Manage products:-{products?.length}
       </h2>
       <div className="grid gap-5 md:grid-cols-1">

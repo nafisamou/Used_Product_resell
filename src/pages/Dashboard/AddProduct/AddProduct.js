@@ -72,10 +72,7 @@ const AddProduct = () => {
     <section className="p-6 bg-gray-300 dark:text-gray-50">
     <form noValidate="" action="" className="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid" onSubmit={handleSubmit(handleAddProduct)}>
       <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-900">
-        <div className="space-y-2 col-span-full lg:col-span-1">
-          <p className="font-medium">Add Product</p>
-          <p className="text-xs">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci fuga autem eum!</p>
-        </div>
+        
         <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
           <div className="col-span-full sm:col-span-3">
           <label htmlFor="brand" className="text-sm">Brand</label>
@@ -178,10 +175,7 @@ const AddProduct = () => {
         </div>
       </fieldset>
       <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-900">
-        <div className="space-y-2 col-span-full lg:col-span-1">
-          <p className="font-medium">Profile</p>
-          <p className="text-xs">Adipisci fuga autem eum!</p>
-        </div>
+       
         <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
           <div className="col-span-full sm:col-span-3">
           <label htmlFor="contact" className="text-sm">Contact</label>

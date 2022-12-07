@@ -17,10 +17,10 @@ const CategoryCard = ({ category }) => {
           </Link></div>
         </div> */}
 
-      <div className="flex flex-col items-center justify-center w-full max-w-sm mx-auto  card h-56 my-12 py-4 shadow-lg bg-white">
-        <div className="flex flex-col items-center justify-center w-full max-w-sm mx-auto ">
-          <figure>
-            <img className="object-center object-cover" src={img} alt="/" />
+      <div className="flex flex-col items-center justify-center w-full max-w-sm mx-auto  card h-64 my-12 py-4 shadow-lg bg-white">
+        <div className="flex flex-col items-center justify-center  max-w-sm mx-auto ">
+          <figure >
+            <img className="object-center object-cover h-1/2" src={img} alt="/" />
           </figure>
 
           <div className="w-56 mt-10 overflow-hidden  rounded-lg  md:w-64 bg-gray-500">

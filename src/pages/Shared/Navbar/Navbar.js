@@ -1,10 +1,11 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button, InputGroup } from "reactstrap";
 import React, { useContext } from "react";
-import img from '../../../assets/resell.png'
+import img from "../../../assets/resell.png";
 
 import { ThemeContext, themes } from "../../../contexts/ThemeContext.js";
 import { AuthContext } from "../../../contexts/AuthProvider";
+import "./Navbar.css";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -18,52 +19,47 @@ const Navbar = () => {
   };
 
   const menuItems = (
-    <React.Fragment>
+    <>
       <li>
-        <NavLink
+        <Link
           to="/"
           aria-label="home"
           title="home"
-          className={({ isActive }) =>
-            isActive
-              ? "font-medium tracking-wide text-blue-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-              : "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 text-xl"
-          }
+          className="font-medium text-xl hover:bg-white hover:text-blue-700"
         >
           Home
-        </NavLink>
+        </Link>
       </li>
-      
 
       <li>
         {" "}
         {user?.uid ? (
           <>
-           
-            <Link to="/dashboard"title="Dashboard" className="font-medium text-xl">Dashboard</Link>
-          
-            
-            <span className="lg:font-medium lg:block hidden mt-4  lg:text-xl">{user?.displayName}</span>
+            <Link
+              to="/dashboard"
+              title="Dashboard"
+              className="font-medium text-xl hover:bg-white hover:text-blue-900"
+            >
+              Dashboard
+            </Link>
+
             <Link
               title="Logout"
-              className=" font-medium text-xl
-       "
+              className="font-medium text-xl hover:bg-white hover:text-blue-700 "
               onClick={handleLogOut}
             >
-              <span className="lg:my-4 lg:font-medium"> Log Out</span>
+              Log Out
             </Link>
           </>
         ) : (
           <>
-            <span className="">
-              <Link
-                to="/login"
-                title="LogIn"
-                className=" lg:font-medium text-xl "
-              >
-                Login
-              </Link>
-            </span>
+            <Link
+              to="/login"
+              title="LogIn"
+              className="font-medium text-xl hover:bg-white hover:text-blue-700"
+            >
+              Login
+            </Link>
           </>
         )}
       </li>
@@ -73,16 +69,23 @@ const Navbar = () => {
           to="/blog"
           aria-label="Blog"
           title="Blog"
-          className="lg:font-medium lg:text-xl"
+          className="font-medium text-xl hover:bg-white hover:text-blue-700"
         >
           Blog
         </Link>
       </li>
       <li>
-      <InputGroup className="lg:block hidden">
+        {" "}
+        <Link className="font-medium text-xl hover:bg-white hover:text-blue-700">
+          {user?.displayName}
+        </Link>
+      </li>
+      <li>
+        <InputGroup className="lg:block hidden hover:bg-white hover:border-none ">
           <ThemeContext.Consumer>
             {({ changeTheme }) => (
               <Button
+                className="bg-white border-none hover:bg-white"
                 color="link"
                 onClick={() => {
                   setDarkMode(!darkMode);
@@ -90,13 +93,10 @@ const Navbar = () => {
                 }}
               >
                 <i className={darkMode ? "fas fa-sun" : "fas fa-moon"}></i>
-                <span className="d-lg-none d-md-block">
+                <span className="d-lg-none  d-md-block">
                   <div className="form-control">
                     <label className="label cursor-pointer">
-                      <input
-                        type="checkbox"
-                        className="toggle toggle-primary"
-                      />
+                      <input type="checkbox" className="toggle " />
                     </label>
                   </div>
                 </span>
@@ -105,11 +105,11 @@ const Navbar = () => {
           </ThemeContext.Consumer>
         </InputGroup>
       </li>
-    </React.Fragment>
+    </>
   );
 
   return (
-    <div className="navbar flex justify-between">
+    <div className=" mx-auto navbar flex justify-between bg-white shadow-lg">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -130,16 +130,30 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={1}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-compact dropdown-content mt-3 p-2 bg-white  rounded-box w-52"
           >
             {menuItems}
           </ul>
         </div>
         <ul>
           {" "}
-         <div className="flex justify-center items-center"> <Link to="/" title="Mobile Dokan" className="btn btn-ghost normal-case text-xl ">
-           <span><img className="w-6 h-6 mx-3" src={img} alt="" /></span> <span>Mobile Dokan</span>
-          </Link></div>
+          <div className=" relative flex justify-center items-center mx-5">
+            {" "}
+         
+
+            <Link
+            to="/"
+            aria-label="Mobile Dokan"
+            title="Mobile Dokan"
+            className="inline-flex items-center"
+          >
+            <img className="w-6 h-6 mr-1" src={img} alt="" />
+
+            <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
+              Mobile Dokan
+            </span>
+          </Link>
+          </div>
         </ul>
       </div>
       <div className="navbar-center hidden lg:flex ">
