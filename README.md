@@ -1,7 +1,8 @@
 # Used Product Client-side Repository:
 Admin: rifa@gmail.com
 Password: 1234Aa@
-
+Seller: ritu@gmail.com
+Password: 1234Aa@
 
 # Live Link
 * Hosted in Firebase ->[Resell Product](https://used-products-resale-870c2.web.app)
